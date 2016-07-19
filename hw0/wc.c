@@ -8,38 +8,46 @@ void wc ( FILE *infile, char *inname);
 int
 main (int argc, char *argv[]) {
 
-if (argc < 1)
+if (argc <= 1)
 {
 
-} 
+}
+else
+{
+	int i = 1;
+	while(i < argc){
+		FILE *infile = NULL;
+		infile = fopen(argv[i], "r");
+		wc(infile,argv[i]);
+		i++;
+	}
+}
 
-
-    
 }
 
 void
 wc( FILE *infile, char *inname) {
-       
-infile = fopen (inname, "r");
-
 int words = 0;
 int lines = 0;
 int chars = 0;
 int c;
-bool isspace = true;
+bool isspace = false;
 
-	if(c = fgetc(infile) != EOF)
-	{		
-		if(isspace=false)
+	while((c = fgetc(infile)) != EOF){
+		chars++;		
+		if(isspace(c))
 		{
-			words++
+			if(isspace == false)
+				words++;
+			isspace = true;
 		}
+		else
+			isspace = false;
 
-		if( c = " " || c = "\n")
+		if( c == '\n')
 		{	
 			lines++;
 		}	
-
 	}
-    
+	printf(" %d %d %d %s\n",lines,words,chars,inname);    
 }
