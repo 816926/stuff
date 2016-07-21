@@ -2,6 +2,8 @@
 #include <sys/time.h>
 #include <sys/resource.h>
 
+
+//GOOGLE MAN STRUCT RLMIT THEN YOU WILL GET AN IDEA ON HOW TO DO THIS OKAY?
 int main() {
     struct rlimit lim;
     // print the following values using rlimit
